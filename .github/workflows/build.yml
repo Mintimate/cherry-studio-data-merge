@@ -6,6 +6,9 @@ on:
       - 'v*'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build (${{ matrix.os }})
@@ -30,9 +33,8 @@ jobs:
         run: npm ci
 
       - name: Package Application
-        run: npm run dist
+        run: npm run dist -- --publish never
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: false
 
       - name: Upload Artifacts
@@ -44,13 +46,26 @@ jobs:
             release/*.exe
             release/*.zip
 
+  release:
+    name: Publish Release Assets
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: '*-builds'
+          path: release-assets
+          merge-multiple: true
+
       - name: Publish Release Assets
-        if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v3
         with:
           files: |
-            release/*.dmg
-            release/*.exe
-            release/*.zip
+            release-assets/*.dmg
+            release-assets/*.exe
+            release-assets/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
