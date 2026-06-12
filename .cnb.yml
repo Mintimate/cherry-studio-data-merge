@@ -12,3 +12,4 @@ main:
             username: ${GIT_USERNAME}
             password: ${GIT_ACCESS_TOKEN}
             force: true
+            push_tags: true
