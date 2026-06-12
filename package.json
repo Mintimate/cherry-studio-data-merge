@@ -1,0 +1,40 @@
+{
+  "name": "cherry-studio-backup-merger",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "desktop": "tsx scripts/devDesktop.ts",
+    "build": "tsc -b && vite build && npm run build:electron",
+    "build:electron": "esbuild src/electron/main.ts --bundle --platform=node --target=node24 --format=esm --outfile=dist-electron/main.js --external:electron --external:playwright --external:jszip --external:pako && esbuild src/electron/preload.ts --bundle --platform=node --target=node24 --format=esm --outfile=dist-electron/preload.js --external:electron",
+    "build:desktop": "npm run build",
+    "start:desktop": "npm run build && electron .",
+    "preview": "vite preview",
+    "merge:direct": "tsx src/node/cli.ts"
+  },
+  "dependencies": {
+    "electron": "^35.0.0",
+    "jszip": "^3.10.1",
+    "pako": "^2.1.0",
+    "playwright": "^1.53.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/node": "^24.0.0",
+    "@types/pako": "^2.0.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2",
+    "vite": "^6.3.5"
+  }
+}
