@@ -56,3 +56,7 @@ playwright-report/
 # User backup files (Very large ZIPs and BAK files)
 *.zip
 *.bak
+
+# ai
+.agents/
+skills-lock.json
