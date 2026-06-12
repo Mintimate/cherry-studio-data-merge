@@ -14,8 +14,30 @@
     "build:electron": "esbuild src/electron/main.ts --bundle --platform=node --target=node24 --format=esm --outfile=dist-electron/main.js --external:electron --external:playwright --external:jszip --external:pako && esbuild src/electron/preload.ts --bundle --platform=node --target=node24 --format=esm --outfile=dist-electron/preload.js --external:electron",
     "build:desktop": "npm run build",
     "start:desktop": "npm run build && electron .",
+    "dist": "npm run build && electron-builder",
     "preview": "vite preview",
     "merge:direct": "tsx src/node/cli.ts"
+  },
+  "build": {
+    "appId": "com.mintimate.cherry-studio-backup-merger",
+    "productName": "Cherry Studio Backup Merger",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
   },
   "dependencies": {
     "electron": "^35.0.0",
@@ -32,9 +54,10 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "electron-builder": "^26.15.3",
     "tailwindcss": "^4.1.7",
-    "typescript": "^5.7.2",
     "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
     "vite": "^6.3.5"
   }
 }
