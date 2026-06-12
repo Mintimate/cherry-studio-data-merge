@@ -2,6 +2,8 @@
   "name": "cherry-studio-backup-merger",
   "private": true,
   "version": "1.0.0",
+  "description": "Desktop backup merge utility for Cherry Studio exports.",
+  "author": "Mintimate",
   "type": "module",
   "main": "dist-electron/main.js",
   "engines": {
@@ -40,7 +42,6 @@
     }
   },
   "dependencies": {
-    "electron": "^35.0.0",
     "jszip": "^3.10.1",
     "pako": "^2.1.0",
     "playwright": "^1.53.0",
@@ -54,6 +55,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^35.0.0",
     "electron-builder": "^26.15.3",
     "esbuild": "0.28.1",
     "tailwindcss": "^4.1.7",
