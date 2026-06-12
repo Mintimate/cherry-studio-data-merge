@@ -1,15 +1,25 @@
+# 1. 定义可复用的同步流水线模版
+.sync_pipeline: &sync_pipeline
+  imports:
+    - https://cnb.cool/Mintimate/secret/-/blob/main/SyncToGitHub.yml
+  stages:
+    - name: 自动同步代码
+      image: tencentcom/git-sync
+      settings:
+        target_url: https://github.com/Mintimate/cherry-studio-data-merge.git
+        auth_type: https
+        username: ${GIT_USERNAME}
+        password: ${GIT_ACCESS_TOKEN}
+        force: true
+        push_tags: true
+
+# 2. 触发分支 push 事件（同步 main 分支的 commit）
 main:
   push:
-    - name: "推送镜像"
-      imports:
-        - https://cnb.cool/Mintimate/secret/-/blob/main/SyncToGitHub.yml
-      stages:
-        - name: 自动同步代码
-          image: tencentcom/git-sync
-          settings:
-            target_url: https://github.com/Mintimate/cherry-studio-data-merge.git
-            auth_type: https
-            username: ${GIT_USERNAME}
-            password: ${GIT_ACCESS_TOKEN}
-            force: true
-            push_tags: true
+    - *sync_pipeline
+
+# 3. 触发 tag push 事件（同步所有推送的 Tag）
+# “$” 是 CNB 的默认/兜底匹配符，代表匹配所有未被其他规则匹配的分支或 Tag
+$:
+  tag_push:
+    - *sync_pipeline
