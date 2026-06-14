@@ -1,8 +1,8 @@
-import { app, BrowserWindow, dialog, ipcMain, nativeTheme, type WebContents } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, nativeTheme, protocol, net, type WebContents } from 'electron'
 import { readdirSync } from 'node:fs'
 import { stat } from 'node:fs/promises'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 import type { DesktopBackupSummary, DesktopMergeRequest, DesktopProgressEvent } from '../types/desktop'
 import { mergeDirectBackups } from '../node/directMerge'
@@ -10,6 +10,18 @@ import { inspectBackupPaths } from '../node/inspectBackups'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const isDev = Boolean(process.env.VITE_DEV_SERVER_URL)
+
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: 'app',
+    privileges: {
+      standard: true,
+      secure: true,
+      supportFetchAPI: true,
+      corsEnabled: true,
+    },
+  },
+])
 
 function createWindow() {
   const isDark = nativeTheme.shouldUseDarkColors
@@ -35,16 +47,25 @@ function createWindow() {
     },
   })
 
-
   if (isDev) {
     void win.loadURL(process.env.VITE_DEV_SERVER_URL!)
     win.webContents.openDevTools({ mode: 'detach' })
   } else {
-    void win.loadFile(path.join(__dirname, '../dist/index.html'))
+    void win.loadURL('app://app/index.html')
   }
 }
 
 app.whenReady().then(() => {
+  protocol.handle('app', (request) => {
+    const url = new URL(request.url)
+    let pathname = url.pathname
+    if (pathname === '/' || pathname === '') {
+      pathname = '/index.html'
+    }
+    const filePath = path.join(__dirname, '..', 'dist', pathname)
+    return net.fetch(pathToFileURL(filePath).toString())
+  })
+
   registerIpc()
   createWindow()
 
