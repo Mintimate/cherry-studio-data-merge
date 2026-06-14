@@ -31,8 +31,17 @@
       "dist-electron/**/*"
     ],
     "mac": {
-      "target": "dmg",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "identity": "-",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
       "category": "public.app-category.developer-tools"
+    },
+    "dmg": {
+      "sign": false
     },
     "win": {
       "target": [
