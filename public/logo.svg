@@ -1,82 +1,68 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Card shadow -->
-    <filter id="mdShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#FFCDD2" flood-opacity="0.5" />
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#FFCDD2" flood-opacity="0.3" />
+    <linearGradient id="badge" x1="84" y1="54" x2="428" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7F7" />
+      <stop offset="0.48" stop-color="#FFECEF" />
+      <stop offset="1" stop-color="#FFD7DE" />
+    </linearGradient>
+    <linearGradient id="panel" x1="136" y1="150" x2="374" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#263241" />
+      <stop offset="1" stop-color="#151B24" />
+    </linearGradient>
+    <linearGradient id="leftCherry" x1="164" y1="268" x2="248" y2="392" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5A91" />
+      <stop offset="1" stop-color="#E91E63" />
+    </linearGradient>
+    <linearGradient id="rightCherry" x1="260" y1="258" x2="354" y2="388" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF3156" />
+      <stop offset="1" stop-color="#C91436" />
+    </linearGradient>
+    <linearGradient id="arrow" x1="196" y1="230" x2="326" y2="230" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A6F4FF" />
+      <stop offset="1" stop-color="#6EE7B7" />
+    </linearGradient>
+    <filter id="softShadow" x="42" y="46" width="428" height="438" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#721D33" flood-opacity="0.2" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#111827" flood-opacity="0.16" />
     </filter>
-
-    <!-- Diagonal cast shadow for Material cutouts -->
-    <clipPath id="leftCherryClip">
-      <circle cx="200" cy="310" r="75" />
-    </clipPath>
-    <clipPath id="rightCherryClip">
-      <circle cx="312" cy="310" r="75" />
-    </clipPath>
+    <filter id="innerLift" x="110" y="126" width="292" height="292" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#111827" flood-opacity="0.25" />
+    </filter>
   </defs>
 
-  <!-- Cute square badge background with rounded corners -->
-  <rect width="512" height="512" rx="140" fill="#FFF5F5" />
-  <rect width="496" height="496" x="8" y="8" rx="132" stroke="#FFEBEE" stroke-width="8" />
+  <rect x="26" y="26" width="460" height="460" rx="118" fill="url(#badge)" />
+  <rect x="36" y="36" width="440" height="440" rx="108" stroke="#FFFFFF" stroke-opacity="0.72" stroke-width="10" />
+  <rect x="54" y="56" width="404" height="398" rx="92" stroke="#F7A8B7" stroke-opacity="0.34" stroke-width="4" />
 
-  <!-- Main group with soft shadow -->
-  <g filter="url(#mdShadow)">
-    <!-- Stems (Clean thick material green curves) -->
-    <path d="M 200 235 C 200 170, 225 145, 256 120" stroke="#4CAF50" stroke-width="12" stroke-linecap="round" fill="none" />
-    <path d="M 312 235 C 312 170, 287 145, 256 120" stroke="#4CAF50" stroke-width="12" stroke-linecap="round" fill="none" />
-    <path d="M 256 120 C 256 100, 270 85, 290 70" stroke="#4CAF50" stroke-width="12" stroke-linecap="round" fill="none" />
+  <g filter="url(#softShadow)">
+    <rect x="128" y="142" width="256" height="256" rx="62" fill="url(#panel)" />
+    <rect x="146" y="160" width="220" height="220" rx="48" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="3" />
 
-    <!-- Leaf (Cute green leaf pointing top-right) -->
-    <path d="M 256 120 C 280 105, 330 105, 320 70 C 295 75, 275 100, 256 120 Z" fill="#8BC34A" />
-
-    <!-- Left Cherry Body (Chubby Pinkish Red) -->
-    <circle cx="200" cy="310" r="75" fill="#FF4081" />
-    <!-- Cast stem shadow on Left Cherry (Material Design style) -->
-    <g clip-path="url(#leftCherryClip)">
-      <path d="M 200 235 C 210 250, 225 290, 210 330 L 250 330 L 250 200 Z" fill="#000000" opacity="0.08" />
+    <g opacity="0.9">
+      <rect x="172" y="188" width="108" height="32" rx="12" fill="#354356" />
+      <rect x="192" y="236" width="148" height="32" rx="12" fill="#354356" />
+      <rect x="172" y="284" width="108" height="32" rx="12" fill="#354356" />
+      <circle cx="188" cy="204" r="6" fill="#A6F4FF" />
+      <circle cx="208" cy="252" r="6" fill="#A6F4FF" />
+      <circle cx="188" cy="300" r="6" fill="#A6F4FF" />
     </g>
-    <!-- Left Highlights -->
-    <circle cx="175" cy="275" r="14" fill="#FFFFFF" opacity="0.3" />
-    <circle cx="165" cy="285" r="7" fill="#FFFFFF" opacity="0.3" />
 
-    <!-- Right Cherry Body (Vibrant Red) -->
-    <circle cx="312" cy="310" r="75" fill="#FF1744" />
-    <!-- Cast stem shadow on Right Cherry -->
-    <g clip-path="url(#rightCherryClip)">
-      <path d="M 312 235 C 322 250, 337 290, 322 330 L 362 330 L 362 200 Z" fill="#000000" opacity="0.08" />
+    <path d="M204 229H304" stroke="url(#arrow)" stroke-width="18" stroke-linecap="round" />
+    <path d="M291 200L326 229L291 258" stroke="url(#arrow)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+
+    <path d="M218 306C218 235 242 188 280 150" stroke="#49B85E" stroke-width="16" stroke-linecap="round" />
+    <path d="M310 306C310 236 294 191 280 150" stroke="#3AA84F" stroke-width="16" stroke-linecap="round" />
+    <path d="M280 150C300 126 326 113 354 112C352 143 329 167 295 174C288 166 284 158 280 150Z" fill="#8BD34A" />
+
+    <g filter="url(#innerLift)">
+      <circle cx="218" cy="336" r="62" fill="url(#leftCherry)" />
+      <circle cx="310" cy="336" r="62" fill="url(#rightCherry)" />
+      <path d="M244 292C252 321 252 358 238 390" stroke="#B8174D" stroke-opacity="0.22" stroke-width="22" stroke-linecap="round" />
+      <path d="M338 292C346 321 346 358 332 390" stroke="#8F1029" stroke-opacity="0.2" stroke-width="22" stroke-linecap="round" />
+      <circle cx="195" cy="315" r="15" fill="#FFFFFF" fill-opacity="0.32" />
+      <circle cx="286" cy="315" r="15" fill="#FFFFFF" fill-opacity="0.3" />
+      <circle cx="180" cy="332" r="7" fill="#FFFFFF" fill-opacity="0.28" />
+      <circle cx="271" cy="332" r="7" fill="#FFFFFF" fill-opacity="0.26" />
     </g>
-    <!-- Right Highlights -->
-    <circle cx="287" cy="275" r="14" fill="#FFFFFF" opacity="0.3" />
-    <circle cx="277" cy="285" r="7" fill="#FFFFFF" opacity="0.3" />
-
-    <!-- Cute Heart in the center representing backup merge harmony -->
-    <path d="M 256 290 C 256 290, 248 280, 242 280 C 235 280, 231 285, 231 292 C 231 302, 256 316, 256 316 C 256 316, 281 302, 281 292 C 281 285, 277 280, 270 280 C 264 280, 256 290, 256 290 Z" fill="#FF8A80" />
-
-    <!-- Faces -->
-    <!-- Left Cherry Face -->
-    <!-- Eyes -->
-    <circle cx="170" cy="315" r="7" fill="#37474F" />
-    <circle cx="205" cy="315" r="7" fill="#37474F" />
-    <!-- Eye Sparkles -->
-    <circle cx="168" cy="313" r="2.5" fill="#FFFFFF" />
-    <circle cx="203" cy="313" r="2.5" fill="#FFFFFF" />
-    <!-- Cheeks -->
-    <circle cx="153" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
-    <circle cx="222" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
-    <!-- Cute Smile -->
-    <path d="M 183 323 Q 187.5 329 192 323" stroke="#37474F" stroke-width="4.5" stroke-linecap="round" fill="none" />
-
-    <!-- Right Cherry Face -->
-    <!-- Eyes -->
-    <circle cx="282" cy="315" r="7" fill="#37474F" />
-    <circle cx="317" cy="315" r="7" fill="#37474F" />
-    <!-- Eye Sparkles -->
-    <circle cx="280" cy="313" r="2.5" fill="#FFFFFF" />
-    <circle cx="315" cy="313" r="2.5" fill="#FFFFFF" />
-    <!-- Cheeks -->
-    <circle cx="265" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
-    <circle cx="334" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
-    <!-- Cute open smile -->
-    <path d="M 295 323 Q 299.5 330 304 323" stroke="#37474F" stroke-width="4.5" stroke-linecap="round" fill="none" />
   </g>
 </svg>

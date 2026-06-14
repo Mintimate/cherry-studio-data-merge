@@ -35,12 +35,14 @@
         "dmg",
         "zip"
       ],
+      "icon": "build/icon.icns",
       "identity": "-",
       "hardenedRuntime": false,
       "gatekeeperAssess": false,
       "category": "public.app-category.developer-tools"
     },
     "dmg": {
+      "icon": "build/icon.icns",
       "sign": false
     },
     "win": {

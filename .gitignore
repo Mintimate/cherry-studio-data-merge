@@ -36,7 +36,10 @@ Desktop.ini
 dist/
 dist-electron/
 out/
-build/
+release/
+build/*
+!build/icon.png
+!build/icon.icns
 *.tsbuildinfo
 
 # Environment configurations
