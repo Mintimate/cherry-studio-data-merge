@@ -23,6 +23,7 @@
   "build": {
     "appId": "com.mintimate.cherry-studio-backup-merger",
     "productName": "Cherry Studio Backup Merger",
+    "afterSign": "scripts/afterSign.cjs",
     "directories": {
       "output": "release"
     },

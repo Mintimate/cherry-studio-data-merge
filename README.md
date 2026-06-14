@@ -45,6 +45,12 @@ yarn build
 yarn start:desktop
 ```
 
+## macOS 发布说明
+
+GitHub Actions 会保持 DMG 容器不签名，并对 macOS `.app` 使用 ad-hoc 签名。构建完成后会清理应用包扩展属性，减少 Finder 误报“已损坏”的概率。
+
+该方式不需要 Apple Developer ID 证书，也不会进行 Apple notarization。若用户从浏览器下载后仍被 macOS Gatekeeper 拦截，可在「系统设置」的安全性提示中允许打开，或自行从源码构建。
+
 ## 使用步骤
 
 1. 打开桌面应用。
