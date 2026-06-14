@@ -1,0 +1,82 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Card shadow -->
+    <filter id="mdShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#FFCDD2" flood-opacity="0.5" />
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#FFCDD2" flood-opacity="0.3" />
+    </filter>
+
+    <!-- Diagonal cast shadow for Material cutouts -->
+    <clipPath id="leftCherryClip">
+      <circle cx="200" cy="310" r="75" />
+    </clipPath>
+    <clipPath id="rightCherryClip">
+      <circle cx="312" cy="310" r="75" />
+    </clipPath>
+  </defs>
+
+  <!-- Cute square badge background with rounded corners -->
+  <rect width="512" height="512" rx="140" fill="#FFF5F5" />
+  <rect width="496" height="496" x="8" y="8" rx="132" stroke="#FFEBEE" stroke-width="8" />
+
+  <!-- Main group with soft shadow -->
+  <g filter="url(#mdShadow)">
+    <!-- Stems (Clean thick material green curves) -->
+    <path d="M 200 235 C 200 170, 225 145, 256 120" stroke="#4CAF50" stroke-width="12" stroke-linecap="round" fill="none" />
+    <path d="M 312 235 C 312 170, 287 145, 256 120" stroke="#4CAF50" stroke-width="12" stroke-linecap="round" fill="none" />
+    <path d="M 256 120 C 256 100, 270 85, 290 70" stroke="#4CAF50" stroke-width="12" stroke-linecap="round" fill="none" />
+
+    <!-- Leaf (Cute green leaf pointing top-right) -->
+    <path d="M 256 120 C 280 105, 330 105, 320 70 C 295 75, 275 100, 256 120 Z" fill="#8BC34A" />
+
+    <!-- Left Cherry Body (Chubby Pinkish Red) -->
+    <circle cx="200" cy="310" r="75" fill="#FF4081" />
+    <!-- Cast stem shadow on Left Cherry (Material Design style) -->
+    <g clip-path="url(#leftCherryClip)">
+      <path d="M 200 235 C 210 250, 225 290, 210 330 L 250 330 L 250 200 Z" fill="#000000" opacity="0.08" />
+    </g>
+    <!-- Left Highlights -->
+    <circle cx="175" cy="275" r="14" fill="#FFFFFF" opacity="0.3" />
+    <circle cx="165" cy="285" r="7" fill="#FFFFFF" opacity="0.3" />
+
+    <!-- Right Cherry Body (Vibrant Red) -->
+    <circle cx="312" cy="310" r="75" fill="#FF1744" />
+    <!-- Cast stem shadow on Right Cherry -->
+    <g clip-path="url(#rightCherryClip)">
+      <path d="M 312 235 C 322 250, 337 290, 322 330 L 362 330 L 362 200 Z" fill="#000000" opacity="0.08" />
+    </g>
+    <!-- Right Highlights -->
+    <circle cx="287" cy="275" r="14" fill="#FFFFFF" opacity="0.3" />
+    <circle cx="277" cy="285" r="7" fill="#FFFFFF" opacity="0.3" />
+
+    <!-- Cute Heart in the center representing backup merge harmony -->
+    <path d="M 256 290 C 256 290, 248 280, 242 280 C 235 280, 231 285, 231 292 C 231 302, 256 316, 256 316 C 256 316, 281 302, 281 292 C 281 285, 277 280, 270 280 C 264 280, 256 290, 256 290 Z" fill="#FF8A80" />
+
+    <!-- Faces -->
+    <!-- Left Cherry Face -->
+    <!-- Eyes -->
+    <circle cx="170" cy="315" r="7" fill="#37474F" />
+    <circle cx="205" cy="315" r="7" fill="#37474F" />
+    <!-- Eye Sparkles -->
+    <circle cx="168" cy="313" r="2.5" fill="#FFFFFF" />
+    <circle cx="203" cy="313" r="2.5" fill="#FFFFFF" />
+    <!-- Cheeks -->
+    <circle cx="153" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
+    <circle cx="222" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
+    <!-- Cute Smile -->
+    <path d="M 183 323 Q 187.5 329 192 323" stroke="#37474F" stroke-width="4.5" stroke-linecap="round" fill="none" />
+
+    <!-- Right Cherry Face -->
+    <!-- Eyes -->
+    <circle cx="282" cy="315" r="7" fill="#37474F" />
+    <circle cx="317" cy="315" r="7" fill="#37474F" />
+    <!-- Eye Sparkles -->
+    <circle cx="280" cy="313" r="2.5" fill="#FFFFFF" />
+    <circle cx="315" cy="313" r="2.5" fill="#FFFFFF" />
+    <!-- Cheeks -->
+    <circle cx="265" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
+    <circle cx="334" cy="325" r="10" fill="#FF8A80" opacity="0.75" />
+    <!-- Cute open smile -->
+    <path d="M 295 323 Q 299.5 330 304 323" stroke="#37474F" stroke-width="4.5" stroke-linecap="round" fill="none" />
+  </g>
+</svg>
