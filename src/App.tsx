@@ -425,7 +425,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto max-h-[450px] pr-1.5 custom-scrollbar">
+              <div className="flex-1 min-h-0 overflow-y-auto pr-1.5 pb-4 custom-scrollbar">
                 {mergeableBackups.length >= 2 ? (
                   <MergeSettings backups={mergeableBackups} options={options} onOptionsChange={setOptions} />
                 ) : (
@@ -435,7 +435,7 @@ export default function App() {
                 )}
               </div>
 
-              <div className="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-900 pt-4 mt-auto">
+              <div className="flex shrink-0 items-center justify-between border-t border-zinc-200 dark:border-zinc-900 pt-4">
                 <button
                   type="button"
                   onClick={() => setStep('upload')}
@@ -578,4 +578,3 @@ export default function App() {
     </div>
   )
 }
-
