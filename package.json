@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Desktop backup merge utility for Cherry Studio exports.",
   "author": "Mintimate",
+  "license": "MIT",
   "type": "module",
   "main": "dist-electron/main.js",
   "engines": {
